@@ -8,34 +8,34 @@ import { useEffect } from "react";
 import { Loader } from "lucide-react";
 
 function App() {
-	const { user, isCheckingAuth, checkAuth } = userAuthstore();
+    const { user, isCheckingAuth, checkAuth } = userAuthstore();
 
-	useEffect(() => {
-		checkAuth();
-	}, [checkAuth]);
+    useEffect(() => {
+        checkAuth();
+    }, [checkAuth]);
 
-	if (isCheckingAuth) {
-		return (
-			<div className='h-screen'>
-				<div className='flex justify-center items-center bg-black h-full'>
-					<Loader className='animate-spin text-red-600 size-10' />
-				</div>
-			</div>
-		);
-	}
+    if (isCheckingAuth) {
+        return (
+            <div className='h-screen'>
+                <div className='flex justify-center items-center bg-black h-full'>
+                    <Loader className='animate-spin text-red-600 size-10' />
+                </div>
+            </div>
+        );
+    }
 
-	return (
-		<><BrowserRouter>
-			<Routes>
-				<Route path='/' element={<HomePage />} />
-				<Route path='/login' element={!user ? <LoginPage /> : <Navigate to={"/"} />} />
-				<Route path='/signup' element={!user ? <SignupPage /> : <Navigate to={"/"} />} />
-			</Routes>
-		</BrowserRouter>
-
-			<Toaster />
-		</>
-	);
+    return (
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<HomePage />} />
+                    <Route path='/login' element={!user ? <LoginPage /> : <Navigate to={"/"} />} />
+                    <Route path='/signup' element={!user ? <SignupPage /> : <Navigate to={"/"} />} />
+                </Routes>
+            </BrowserRouter>
+            <Toaster />
+        </>
+    );
 }
 
-export default App;
+export default App; 

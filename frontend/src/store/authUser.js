@@ -9,26 +9,30 @@ export const userAuthstore = create((set) => ({
     isCheckingAuth: true,
     isLoggingOut: false,
 
-
     signup: async (credentials) => {
-        set({ isSigningUp: true })
+        set({ isSigningUp: true });
         try {
             const response = await axios.post("/user/signup", credentials);
             set({ user: response.data.user, isSigningUp: false });
             toast.success("Account created successfully");
+            window.location.href = "/";
+
         } catch (error) {
-            toast.error(error.response.data.error || "An error occured");
+            toast.error(error.response.data.error || "An error occurred");
             set({ isSigningUp: false, user: null });
         }
     },
     login: async (credentials) => {
         set({ isSigningIn: true });
         try {
-            const response = await axios.post('/user/login', credentials);
+            const response = await axios.post("/user/login", credentials);
             set({ user: response.data.user, isSigningIn: false });
             toast.success("Logged in successfully");
+
+            // ✅ Redirect to home screen
+            window.location.href = "/";
         } catch (error) {
-            toast.error(error.response.data.error || "An error occurred");
+            toast.error(error.response?.data?.error || "An error occurred");
             set({ user: null, isSigningIn: false });
         }
     },
@@ -39,8 +43,7 @@ export const userAuthstore = create((set) => ({
             set({ user: null });
             toast.success("Logged out successfully");
         } catch (error) {
-            toast.error(error.response.data.error || "An error occured");
-
+            toast.error(error.response.data.error || "An error occurred");
         }
     },
     checkAuth: async () => {
@@ -49,11 +52,7 @@ export const userAuthstore = create((set) => ({
             const response = await axios.get("/user/auth");
             set({ user: response.data.user, isCheckingAuth: false });
         } catch (error) {
-            // toast.error(error.response.data.error || "An error occured");
             set({ isCheckingAuth: false, user: null });
         }
     },
-
 }));
-
-
