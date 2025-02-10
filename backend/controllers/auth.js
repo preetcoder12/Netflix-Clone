@@ -74,10 +74,19 @@ function logout(req, res) {
     }
 
 }
+//......................................AUTH CHECK...............................................
+function authcheck(req, res) {
+    try {
+        res.status(200).json({ success: true, user: req.user });
+    } catch (error) {
+        return res.status(400).json({ success: false, error: " error occured while checking auth" })
+    }
+}
 
 module.exports = {
     signup,
     login,
-    logout
+    logout,
+    authcheck,
 
 }

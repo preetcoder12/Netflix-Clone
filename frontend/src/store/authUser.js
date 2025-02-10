@@ -1,0 +1,59 @@
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { create } from 'zustand';
+
+export const userAuthstore = create((set) => ({
+    user: null,
+    isSigningUp: false,
+    isSigningIn: false,
+    isCheckingAuth: true,
+    isLoggingOut: false,
+
+
+    signup: async (credentials) => {
+        set({ isSigningUp: true })
+        try {
+            const response = await axios.post("/user/signup", credentials);
+            set({ user: response.data.user, isSigningUp: false });
+            toast.success("Account created successfully");
+        } catch (error) {
+            toast.error(error.response.data.error || "An error occured");
+            set({ isSigningUp: false, user: null });
+        }
+    },
+    login: async (credentials) => {
+        set({ isSigningIn: true });
+        try {
+            const response = await axios.post('/user/login', credentials);
+            set({ user: response.data.user, isSigningIn: false });
+            toast.success("Logged in successfully");
+        } catch (error) {
+            toast.error(error.response.data.error || "An error occurred");
+            set({ user: null, isSigningIn: false });
+        }
+    },
+
+    logout: async () => {
+        try {
+            await axios.post("/user/logout");
+            set({ user: null });
+            toast.success("Logged out successfully");
+        } catch (error) {
+            toast.error(error.response.data.error || "An error occured");
+
+        }
+    },
+    checkAuth: async () => {
+        set({ isCheckingAuth: true });
+        try {
+            const response = await axios.get("/user/auth");
+            set({ user: response.data.user, isCheckingAuth: false });
+        } catch (error) {
+            // toast.error(error.response.data.error || "An error occured");
+            set({ isCheckingAuth: false, user: null });
+        }
+    },
+
+}));
+
+

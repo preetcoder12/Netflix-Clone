@@ -1,14 +1,21 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { userAuthstore } from "../store/authUser";
+
 const SignupPage = () => {
-  const [email, Setemail] = useState("");
+  const [SearchParams] = useSearchParams();
+  const emailvalue = SearchParams.get("email")
+  const [email, Setemail] = useState(emailvalue || "");
   const [password, Setpassword] = useState("");
   const [username, Setusername] = useState("");
 
+  const { signup } = userAuthstore();
+
   const handleSignup = (e) => {
     e.preventDefault();
-    console.log(email, username, password);
-  }
+    signup({ email, password, username })
+  };
 
   return (
     <div className="h-screen w-full hero-bg">
@@ -35,7 +42,7 @@ const SignupPage = () => {
                 id="email"
                 required
                 value={email}
-                onChange={(e)=>Setemail(e.target.value)}
+                onChange={(e) => Setemail(e.target.value)}
               />
             </div>
             <div>
@@ -49,7 +56,7 @@ const SignupPage = () => {
                 id="username"
                 required
                 value={username}
-                onChange={(e)=>Setusername(e.target.value)}
+                onChange={(e) => Setusername(e.target.value)}
               />
             </div>
 
@@ -64,7 +71,7 @@ const SignupPage = () => {
                 id="password"
                 required
                 value={password}
-                onChange={(e)=>Setpassword(e.target.value)}
+                onChange={(e) => Setpassword(e.target.value)}
               />
             </div>
 

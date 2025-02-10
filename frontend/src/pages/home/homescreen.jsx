@@ -1,8 +1,10 @@
+import { userAuthstore } from "../../store/authUser"
 
 const homescreen = () => {
+  const {logout} = userAuthstore();
   return (
     <div>
-      <h1>home</h1>
+      <button onClick={logout}>logout</button>
     </div>
   )
 }
