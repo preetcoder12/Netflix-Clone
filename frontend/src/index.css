@@ -16,3 +16,19 @@
 		background-position: 1000px 0;
 	}
 }
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+.scrollbar-hidden::-webkit-scrollbar {
+	display: none;
+  }
+  
+  /* Hide scrollbar for Firefox */
+  .scrollbar-hidden {
+	scrollbar-width: none;
+  }
+  
+  /* Hide scrollbar for Edge */
+  .scrollbar-hidden {
+	-ms-overflow-style: none;
+  }
+  
