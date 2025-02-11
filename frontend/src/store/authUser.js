@@ -12,7 +12,7 @@ export const userAuthstore = create((set) => ({
     signup: async (credentials) => {
         set({ isSigningUp: true });
         try {
-            const response = await axios.post("/user/signup", credentials);
+            const response = await axios.post("/api/v1/user/signup", credentials);
             set({ user: response.data.user, isSigningUp: false });
             toast.success("Account created successfully");
             window.location.href = "/";
@@ -25,7 +25,7 @@ export const userAuthstore = create((set) => ({
     login: async (credentials) => {
         set({ isSigningIn: true });
         try {
-            const response = await axios.post("/user/login", credentials);
+            const response = await axios.post("/api/v1/user/login", credentials);
             set({ user: response.data.user, isSigningIn: false });
             toast.success("Logged in successfully");
 
@@ -39,7 +39,7 @@ export const userAuthstore = create((set) => ({
 
     logout: async () => {
         try {
-            await axios.post("/user/logout");
+            await axios.post("/api/v1/user/logout");
             set({ user: null });
             toast.success("Logged out successfully");
         } catch (error) {
@@ -49,7 +49,7 @@ export const userAuthstore = create((set) => ({
     checkAuth: async () => {
         set({ isCheckingAuth: true });
         try {
-            const response = await axios.get("/user/auth");
+            const response = await axios.get("/api/v1/user/auth");
             set({ user: response.data.user, isCheckingAuth: false });
         } catch (error) {
             set({ isCheckingAuth: false, user: null });
