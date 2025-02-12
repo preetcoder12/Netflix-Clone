@@ -15,9 +15,8 @@ const WatchPage = () => {
     const [loading, setloading] = useState(true);
     const [content, setContent] = useState(null);
     const [similarcontent, setSimilarContent] = useState([]);
-    const sliderRef = useRef(null); // ✅ Define sliderRef
-
     const { contentType } = useContentStore();
+    const sliderRef = useRef(null); 
 
     function formatReleaseDate(date) {
         return new Date(date).toLocaleDateString("en-US", {
@@ -26,7 +25,6 @@ const WatchPage = () => {
             day: "numeric",
         })
     }
-
 
     useEffect(() => {
         const getTrailers = async () => {
@@ -121,6 +119,8 @@ const WatchPage = () => {
                         </button>
                     </div>
                 )}
+                    
+                    {/* Trailer video */}
                 <div className='aspect-video mb-8 p-2 sm:px-10 md:px-32'>
                     {trailers.length > 0 && (
                         <ReactPlayer
@@ -132,9 +132,9 @@ const WatchPage = () => {
                         />
                     )}
                     {trailers?.length === 0 && (
-                        <h2 className='text-xl text-center mt-5'>
+                        <h2 className='text-2xl text-center mt-5'>
                             No trailers available for{" "}
-                            <span className='font-bold text-red-600'>{content?.title || content?.name}</span> 😥
+                            <span className='font-bold text-red-600 ml-2'>{content?.title || content?.name}</span> 😥
                         </h2>
                     )}
                 </div>
