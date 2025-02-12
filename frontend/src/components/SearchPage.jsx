@@ -51,9 +51,8 @@ const SearchPage = () => {
           {["movie", "tv", "person"].map((tab) => (
             <button
               key={tab}
-              className={`px-4 py-3 rounded ${
-                activeTab === tab ? "bg-red-600" : "bg-gray-500"
-              } hover:bg-red-700`}
+              className={`px-4 py-3 rounded ${activeTab === tab ? "bg-red-600" : "bg-gray-500"
+                } hover:bg-red-700`}
               onClick={() => handleActiveTab(tab)}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -95,6 +94,7 @@ const SearchPage = () => {
                         className="max-h-96 rounded mx-auto"
                       />
                       <h2 className="mt-2 text-xl font-bold">{result.name}</h2>
+                      <h3 className="mt-2 text-l ">( {result.known_for_department} )</h3>
                     </div>
                   ) : (
                     <Link to={`/watch/${result.id}`} onClick={() => setContentType(activeTab)}>

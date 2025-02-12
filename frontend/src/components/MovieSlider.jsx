@@ -19,7 +19,7 @@ const MovieSlider = ({ category }) => {
     const formattedContentType = contentType === "movie" ? "Movies" : "TV Shows";
 
     // Fetching content data from API
-    useEffect(() => {
+    useEffect(() => {   
         const getContent = async () => {
             try {
                 const res = await axios.get(`/api/v1/${contentType}/${category}`);

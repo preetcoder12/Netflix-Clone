@@ -77,9 +77,11 @@ function logout(req, res) {
 //......................................AUTH CHECK...............................................
 function authcheck(req, res) {
     try {
+        console.log("req.user:", req.user);
         res.status(200).json({ success: true, user: req.user });
     } catch (error) {
-        return res.status(400).json({ success: false, error: " error occured while checking auth" })
+        console.log("Error in authCheck controller", error.message);
+        res.status(500).json({ success: false, message: "Internal server error" });
     }
 }
 

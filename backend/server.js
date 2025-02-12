@@ -18,10 +18,10 @@ app.get('/', (req, res) => {
     return res.send("home page");
 });
 
-app.use('/user', authRoutes);
-app.use('/movies', protectroute, movieRoutes);
-app.use('/tv_shows', protectroute, tv_showsRoutes);
-app.use('/search', protectroute, search_routes);
+app.use('/api/v1/user', authRoutes);
+app.use('/api/v1/movie', protectroute, movieRoutes);
+app.use('/api/v1/tv_shows', protectroute, tv_showsRoutes);
+app.use('/api/v1/search', protectroute, search_routes);
 
 
 

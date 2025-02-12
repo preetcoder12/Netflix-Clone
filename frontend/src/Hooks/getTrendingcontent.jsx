@@ -8,16 +8,22 @@ const useGetTrendingContent = () => {
 
     useEffect(() => {
         const getTrendingContent = async () => {
+            if (!contentType) return; // Ensure contentType is not undefined
+            
+            const url = `/api/v1/${contentType}/trending`;
+            console.log("Fetching from URL:", url);
+    
             try {
-                const res = await axios.get(`/api/v1/${contentType}/trending`);
+                const res = await axios.get(url);
                 setTrendingContent(res.data.content);
             } catch (error) {
-                console.error("Error fetching trending content:", error);
+                console.error("Error fetching trending content:", error?.response?.data || error.message);
             }
         };
-
+    
         getTrendingContent();
     }, [contentType]);
+    
 
     return { trendingContent };
 };
