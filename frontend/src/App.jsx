@@ -10,7 +10,6 @@ import WatchPage from "./pages/WatchPage";
 import SearchPage from "./components/SearchPage";
 import History from "./components/History";
 import NotFoundPage from "./pages/notFound";
-
 function App() {
     const { user, isCheckingAuth, checkAuth } = userAuthstore();
 

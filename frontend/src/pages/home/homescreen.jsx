@@ -6,6 +6,7 @@ import { Original_base_url, MOVIE_CATEGORIES, TV_CATEGORIES } from "../../utils/
 import { useContentStore } from "../../store/content";
 import MovieSlider from "../../components/MovieSlider";
 
+
 const HomeScreen = () => {
   const { contentType } = useContentStore();
   const { trendingContent } = useGetTrendingContent();
@@ -64,6 +65,7 @@ const HomeScreen = () => {
           ? MOVIE_CATEGORIES.map((category) => <MovieSlider key={category} category={category} />)
           : TV_CATEGORIES.map((category) => <MovieSlider key={category} category={category} />)}
       </div>
+
     </>
   );
 };

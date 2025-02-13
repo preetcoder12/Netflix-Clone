@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { userAuthstore } from "../store/authUser";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 const SignupPage = () => {
   const [SearchParams] = useSearchParams();
   const emailvalue = SearchParams.get("email")
   const [email, Setemail] = useState(emailvalue || "");
-  const [password, Setpassword] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [username, Setusername] = useState("");
 
   const { signup } = userAuthstore();
@@ -52,7 +54,7 @@ const SignupPage = () => {
               <input
                 type="text"
                 className="w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focus:ring"
-                placeholder="Jhondoe"
+                placeholder="vijay maliya"
                 id="username"
                 required
                 value={username}
@@ -60,19 +62,26 @@ const SignupPage = () => {
               />
             </div>
 
-            <div>
-              <label htmlFor="password" className="text-gray-300 text-sm font-medium block">
-                Password
-              </label>
+            <label htmlFor="password" className="text-gray-300 text-sm font-medium block">
+              Password
+            </label>
+            <div className="relative">
               <input
-                type="password"
-                className="w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focus:ring"
+                type={showPassword ? "text" : "password"}
+                className="w-full px-3 py-2  border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focus:ring pr-10"
                 placeholder="••••••••"
                 id="password"
                 required
                 value={password}
-                onChange={(e) => Setpassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
+              <button
+                type="button"
+                className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400 hover:text-white"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <EyeOffIcon className="w-5 h-5" /> : <EyeIcon className="w-5 h-5" />}
+              </button>
             </div>
 
             <button className='w-full py-2 bg-red-600 text-white font-semibold rounded-mdhover:bg-red-700'>
