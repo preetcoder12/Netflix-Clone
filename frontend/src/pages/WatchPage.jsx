@@ -4,10 +4,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import axios from "axios";
 import ReactPlayer from "react-player";
 
-import { useContentStore } from "../store/content";
-import { Original_base_url, Small_base_url } from "../utils/constants";
-import Navbar from "../components/Navbar";
-import WatchPageSkeleton from "../components/WatchPageSkeleton";
+import { useContentStore } from "../Store/content";
+import { Original_base_url, Small_base_url } from "../Utils/constants";
+import Navbar from "../Components/Navbar";
+import WatchPageSkeleton from "../Components/WatchPageSkeleton";
 
 const WatchPage = () => {
     // State management

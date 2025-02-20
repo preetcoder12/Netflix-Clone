@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { useContentStore } from "../store/content";
+import { useContentStore } from "../Store/content";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Small_base_url } from "../utils/constants";
+import { Small_base_url } from "../Utils/constants";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const MovieSlider = ({ category }) => {

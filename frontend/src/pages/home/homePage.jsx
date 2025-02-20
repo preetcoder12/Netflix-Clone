@@ -1,5 +1,5 @@
 // import React from "react";
-import { userAuthstore } from "../../store/authUser";
+import { userAuthstore } from "../../Store/authUser";
 import AuthScreen from "./Authscreen"; 
 import HomeScreen from "./Homescreen"; 
 
