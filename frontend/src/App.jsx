@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import LoginPage from "./Pages/loginPage";
-import SignupPage from "./Pages/signupPage";
+import LoginPage from "./Pages/LoginPage";
+import SignupPage from "./Pages/SignupPage";
 import { Toaster } from "react-hot-toast";
 import { userAuthstore } from "./Store/authUser";
 import { useEffect } from "react";
@@ -9,8 +9,8 @@ import { Loader } from "lucide-react";
 import WatchPage from "./Pages/WatchPage";
 import SearchPage from "./Components/SearchPage";
 import History from "./Components/History";
-import NotFoundPage from "./Pages/notFound";
-import HomePage from "./pages/home/homePage";
+import NotFoundPage from "./Pages/NotFound";
+import HomePage from "./Pages/Home/HomePage";
 function App() {
     const { user, isCheckingAuth, checkAuth } = userAuthstore();
 
