@@ -1,10 +1,10 @@
-import Navbar from "../../Components/Navbar";
+import Navbar from "../../components/Navbar";
 import { Link } from "react-router-dom";
 import { Play, Info } from "lucide-react";
 import useGetTrendingContent from "../../Hooks/GetTrendingcontent";
 import { Original_base_url, MOVIE_CATEGORIES, TV_CATEGORIES } from "../../Utils/constants";
 import { useContentStore } from "../../Store/content";
-import MovieSlider from "../../Components/MovieSlider";
+import MovieSlider from "../../components/MovieSlider";
 
 
 const HomeScreen = () => {
